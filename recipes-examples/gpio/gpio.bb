@@ -13,8 +13,6 @@ SRC_URI = "	file://gpio-example.c \
 			file://gpio_lib.h \
 			file://gpio-example.h "
 
-S = "${WORKDIR}"
-
 do_compile() {
 		${CC} ${LDFLAGS} -c gpio-example.c -c gpio_lib.c
 	    ${CC} ${LDFLAGS} gpio-example.o gpio_lib.o -o gpio-example

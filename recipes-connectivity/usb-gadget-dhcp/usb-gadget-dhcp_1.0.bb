@@ -9,8 +9,6 @@ SRC_URI += "file://usb0.sh"
 SRC_URI += "file://udhcpd.conf"
 SRC_URI += "file://S90-USB-GADGET-NET-DHCP.sh"
 
-S = "${WORKDIR}"
-
 do_install() {
     install -d ${D}${sysconfdir_native}/init.d/
     install -m 0755 ${S}/usb0.sh ${D}${sysconfdir_native}/init.d/

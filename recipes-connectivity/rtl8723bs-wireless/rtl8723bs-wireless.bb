@@ -6,8 +6,6 @@ SRC_URI = "file://rtl8723bs_nic.bin \
           "
 PR = "r0"
 
-S = "${WORKDIR}"
-
 do_install:append () {
     install -d ${D}/lib/firmware/rtlwifi
     install -m 0644 rtl8723bs_nic.bin ${D}/lib/firmware/rtlwifi

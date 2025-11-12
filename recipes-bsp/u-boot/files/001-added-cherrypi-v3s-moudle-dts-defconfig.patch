@@ -162,7 +162,7 @@ index 009384e..0000000
 -CONFIG_MACH_SUN8I_V3S=y
 -CONFIG_DRAM_CLK=360
 -# CONFIG_HAS_ARMV7_SECURE_BASE is not set
--# CONFIG_NET is not set
+-CONFIG_NO_NET=y
 diff --git b/configs/sun8i-v3s-cherrypi_defconfig b/configs/sun8i-v3s-cherrypi_defconfig
 new file mode 100644
 index 0000000..7220e99
