@@ -27,4 +27,4 @@ do_install() {
 
 inherit update-rc.d
 
-INITSCRIPT_NAME="gpio-example"
+INITSCRIPT_NAME = "gpio-example"
