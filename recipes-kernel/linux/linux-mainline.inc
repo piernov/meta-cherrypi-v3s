@@ -26,9 +26,14 @@ KRELEASE = "6"
 
 SRC_URI = "https://www.kernel.org/pub/linux/kernel/v${KRELEASE}.x/linux-${PV}.tar.xz \
     file://001-cherry-pi-dts-add.patch \
-	file://defconfig \
+    file://defconfig \
+    file://sun8i-v3s-cherrypi-tc358743.dtsi \
 "
 
 SRC_URI:append:use-mailine-graphics = " file://drm.cfg"
+
+do_configure:append() {
+    cp ${UNPACKDIR}/sun8i-v3s-cherrypi-tc358743.dtsi ${S}/arch/arm/boot/dts/allwinner
+}
 
 FILES_${KERNEL_PACKAGE_NAME}-base:append = " ${nonarch_base_libdir}/modules/${KERNEL_VERSION}/modules.builtin.modinfo"

@@ -1,0 +1,52 @@
+#include <dt-bindings/clock/sun8i-v3s-ccu.h>
+
+&isp {
+  status = "okay";
+};
+
+&csi0 {
+  status = "okay";
+};
+
+&mipi_csi2 {
+  status = "okay";
+};
+
+&mipi_csi2_in {
+  mipi_csi2_in_tc358743: endpoint {
+    remote-endpoint = <&tc358743_out_mipi_csi2>;
+    data-lanes = <1 2>;
+  };
+};
+
+&dphy {
+  status = "okay";
+};
+
+&i2c0 {
+  pinctrl-names = "default";
+  pinctrl-0 = <&i2c0_pins>;
+  status = "okay";
+
+  camera_tc358743: tc358743@f {
+    compatible = "toshiba,tc358743";
+    reg = <0xf>;
+
+    clocks = <&ccu CLK_CSI0_MCLK>;
+    assigned-clocks = <&ccu CLK_CSI0_MCLK>;
+    assigned-clock-parents = <&osc24M>;
+    assigned-clock-rates = <24000000>;
+
+    status = "okay";
+
+    port {
+      tc358743_out_mipi_csi2: endpoint {
+        remote-endpoint = <&mipi_csi2_in_tc358743>;
+        clock-lanes = <0>;
+        clock-noncontinuous;
+        link-frequencies = /bits/ 64 <297000000>;
+        data-lanes = <1 2>;
+      };
+    };
+  };
+};
