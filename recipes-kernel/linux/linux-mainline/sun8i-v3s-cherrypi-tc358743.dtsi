@@ -1,5 +1,15 @@
 #include <dt-bindings/clock/sun8i-v3s-ccu.h>
 
+/ {
+  osc27M: osc27M-clk {
+    #clock-cells = <0>;
+    compatible = "fixed-clock";
+    clock-frequency = <27000000>;
+    clock-accuracy = <50000>;
+    clock-output-names = "osc27M";
+  };
+};
+
 &isp {
   status = "okay";
 };
@@ -32,10 +42,8 @@
     compatible = "toshiba,tc358743";
     reg = <0xf>;
 
-    clocks = <&ccu CLK_CSI0_MCLK>;
-    assigned-clocks = <&ccu CLK_CSI0_MCLK>;
-    assigned-clock-parents = <&osc24M>;
-    assigned-clock-rates = <24000000>;
+    clocks = <&osc27M>;
+    clock-names = "refclk";
 
     status = "okay";
 
